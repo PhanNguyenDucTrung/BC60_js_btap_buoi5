@@ -14,13 +14,17 @@
             crossorigin="anonymous" />
     </head>
     <body>
-        <div class="container">
+        <div class="container mt-2">
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <h2>Quản lí tuyển sinh</h2>
-                    <div class="card" id="quanLiTuyenSinh">
+                    <div class="card" id="quanLiTuyenSinh" style="min-height: 90vh">
+                        <h2 class="mx-auto mt-3">Quản lí tuyển sinh</h2>
                         <div class="card-body">
                             <div class="form">
+                                <div class="form-group">
+                                    <label>Điểm chuẩn</label>
+                                    <input type="number" name="" id="diemChuan" class="form-control" />
+                                </div>
                                 <div class="form-group">
                                     <label>Điểm Toán</label>
                                     <input type="number" class="form-control" id="diemToan" />
@@ -34,37 +38,69 @@
                                     <input type="number" class="form-control" id="diemHoa" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Khu vực ưu tiên</label>
-                                    <input type="text" class="form-control" placeholder="A" id="khuVuc" />
-                                    <small class="form-text text-muted"
-                                        >Nhập một khu vực (A, B, C). Nhập X nếu không thuộc khu vực ưu tiên</small
+                                    <select name="" id="khuVuc" class="form-control">
+                                        <option value="">Chọn một khu vực</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="X">X</option></select
+                                    ><small class="form-text text-muted"
+                                        >Chọn một khu vực (A, B, C). Chọn X nếu không thuộc khu vực ưu tiên</small
                                     >
                                 </div>
                                 <div class="form-group">
-                                    <label>Đối tượng dự thi</label>
-                                    <input type="text" class="form-control" id="doiTuong" />
+                                    <select name="" id="doiTuong" class="form-control">
+                                        <option value="">Chọn đối tượng dự thi</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="0">0</option>
+                                    </select>
                                     <small class="form-text text-muted"
                                         >Nhập một diện đối tượng (1, 2, 3). Nhập 0 nếu không thuộc diện ưu tiên</small
                                     >
                                 </div>
-                                <button class="btn btn-primary" id="btnQuanLiTuyenSinh">Xem kết quả</button>
+                                <button class="mt-2 btn btn-primary" id="btnQuanLiTuyenSinh">Xem kết quả</button>
                             </div>
                         </div>
-                        <div class="alert alert-success mb-0">
-                            <p>Tổng điểm 3 môn là: ${tongDiemBaMon}.</p>
-                            <p>Điểm ưu tiên: ${diemUuTien}.</p>
-                            <p>Tổng điểm tuyển sinh: ${tongDiem}.</p>
-                            <p>Bạn đã đậu tuyển sinh ${result}</p>
-                        </div>
+                        <div class="" id="hienThiTuyenSinh"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container mt-5">
             <div class="row">
-                <div class="col-md-6">
-                    <h2>Tính tiền điện</h2>
+                <div class="col-md-6 mx-auto">
+                    <h2 class="mx-auto">Tính tiền điện</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="">Nhập số tiêu thụ điện</label>
+                                <input
+                                    type="text"
+                                    name=""
+                                    id="soDien"
+                                    class="form-control"
+                                    placeholder=""
+                                    aria-describedby="helpId" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Nhập tên chủ hộ</label>
+                                <input
+                                    type="text"
+                                    name=""
+                                    id="tenHoThieuThuDien"
+                                    class="form-control"
+                                    placeholder=""
+                                    aria-describedby="helpId" />
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Tính nào!</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="hienThiTienDien"></div>
                 </div>
             </div>
         </div>
@@ -83,5 +119,7 @@
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+        <script src="./main.js"></script>
     </body>
 </html>
