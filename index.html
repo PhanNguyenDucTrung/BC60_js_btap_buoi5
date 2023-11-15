@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <label for="">Nhập số tiêu thụ điện</label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     name=""
                                     id="soDien"
                                     class="form-control"
@@ -90,21 +90,94 @@
                                 <input
                                     type="text"
                                     name=""
-                                    id="tenHoThieuThuDien"
+                                    id="tenChuHo"
                                     class="form-control"
                                     placeholder=""
                                     aria-describedby="helpId" />
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary">Tính nào!</button>
+                                <button class="btn btn-primary" id="btnTinhTienDien">Tính nào!</button>
                             </div>
                         </div>
+                        <div id="hienThiTienDien"></div>
                     </div>
-                    <div id="hienThiTienDien"></div>
                 </div>
             </div>
         </div>
 
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h2>Tính thuế thu nhập cá nhân</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nhập họ tên</label>
+                                <input type="text" name="" id="hoTen" class="form-control" value="Duc Trung" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Tổng thu nhập năm</label>
+                                <input
+                                    type="number"
+                                    name=""
+                                    id="tongThuNhapNam"
+                                    class="form-control"
+                                    placeholder=""
+                                    aria-describedby="helpId" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Số người phụ thuộc</label>
+                                <input type="number" id="soNguoiPhuThuoc" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" id="btnTinhThueThuNhapCaNhan">Tính nào!</button>
+                            </div>
+                        </div>
+                        <div id="hienThiThueThuNhap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h2>Tính tiền cáp</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Mã Khách Hàng</label>
+                                <input type="text" name="" id="maKH" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Loại Khách Hàng</label>
+                                <select name="" id="loaiKhachHang" class="form-control">
+                                    <option value="nhaDan">Nhà Dân</option>
+                                    <option value="doanhNghiep">Doanh Nghiệp</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Số Kết Nối</label>
+                                <input type="number" name="" id="soKetNoi" class="form-control" disabled />
+                                <small class="form-text">Dành cho doanh nghiệp</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Số Kênh Cao Cấp</label>
+                                <input type="number" name="" id="soKenhCaoCap" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-success" id="btnTinhTienCap">In hóa đơn</button>
+                            </div>
+                        </div>
+                        <div class="hienThiTienCap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script
