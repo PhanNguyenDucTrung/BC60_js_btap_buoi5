@@ -262,11 +262,17 @@ document.getElementById('btnTinhThueThuNhapCaNhan').addEventListener('click', fu
  * > 10: phiDichVuCoBan = 75 + 5 * (số cổng - 10)
  * Đầu ra: Hóa đơn tiền cáp
  */
+const hienThiTienCap = document.getElementById('hienThiTienCap');
 const soKetNoi = document.getElementById('soKetNoi');
 const loaiKhachHang = document.getElementById('loaiKhachHang');
 loaiKhachHang.addEventListener('change', () => {
     soKetNoi.disabled = !soKetNoi.disabled;
     soKetNoi.value = '';
+});
+soKetNoi.addEventListener('blur', function () {
+    if (soKetNoi.value < 10) {
+        soKetNoi.value = 10;
+    }
 });
 const soKenhCaoCap = document.getElementById('soKenhCaoCap');
 function tinhTienCap(loaiKhachHang, soKetNoi, soKenhCaoCap = 0) {
@@ -282,11 +288,22 @@ function tinhTienCap(loaiKhachHang, soKetNoi, soKenhCaoCap = 0) {
         const phiDichVuCoBan_muc1 = 75;
         const phiDichVuCoBan_muc2 = 5;
         const phiThueKenhCaoCap = 50;
-        tienCap = phiXuLyHoaDon + phiDichVuCoBan_muc1 + phiThueKenhCaoCap * soKenhCaoCap;
+        tienCap =
+            phiXuLyHoaDon + phiDichVuCoBan_muc1 + phiDichVuCoBan_muc2 * soKetNoi + phiThueKenhCaoCap * soKenhCaoCap;
         return tienCap;
     }
 }
 document.getElementById('btnTinhTienCap').addEventListener('click', () => {
+    const maKH = document.getElementById('maKH').value;
     const tienCap = tinhTienCap(loaiKhachHang.value, soKetNoi.value, soKenhCaoCap.value);
     console.log(tienCap);
+
+    var content = '';
+    content = `
+      <div class="alert alert-success mb-0">
+            <p>Mã khách hàng: ${maKH}</p>
+            <p>Tiền cáp phải trả: ${tienCap}</p>
+      </div>
+    `;
+    hienThiTienCap.innerHTML = content;
 });
