@@ -296,13 +296,13 @@ function tinhTienCap(loaiKhachHang, soKetNoi, soKenhCaoCap = 0) {
 document.getElementById('btnTinhTienCap').addEventListener('click', () => {
     const maKH = document.getElementById('maKH').value;
     const tienCap = tinhTienCap(loaiKhachHang.value, soKetNoi.value, soKenhCaoCap.value);
-    console.log(tienCap);
+    const tienCapFormatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(tienCap);
 
     var content = '';
     content = `
       <div class="alert alert-success mb-0">
             <p>Mã khách hàng: ${maKH}</p>
-            <p>Tiền cáp phải trả: ${tienCap}</p>
+            <p>Tiền cáp phải trả: ${tienCapFormatted}</p>
       </div>
     `;
     hienThiTienCap.innerHTML = content;
