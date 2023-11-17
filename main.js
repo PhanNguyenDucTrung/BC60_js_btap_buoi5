@@ -112,7 +112,6 @@ document.getElementById('btnTinhTienDien').addEventListener('click', function ()
     console.log(soDien);
     const hienThiTienDien = document.getElementById('hienThiTienDien');
     const tienDien = tinhTienDien(soDien);
-    console.log('Tien dien', tienDien);
 
     var content = '';
     content = `
@@ -256,8 +255,14 @@ const hienThiTienCap = document.getElementById('hienThiTienCap');
 const soKetNoi = document.getElementById('soKetNoi');
 const loaiKhachHang = document.getElementById('loaiKhachHang');
 loaiKhachHang.addEventListener('change', () => {
-    soKetNoi.disabled = !soKetNoi.disabled;
-    soKetNoi.value = '';
+    if (loaiKhachHang.value === 'doanhNghiep') {
+        soKetNoi.disabled = !soKetNoi.disabled;
+        soKetNoi.value = '10';
+    }
+    if (loaiKhachHang.value === 'nhaDan') {
+        soKetNoi.disabled = 'disabled';
+        soKetNoi.value = '';
+    }
 });
 soKetNoi.addEventListener('blur', function () {
     if (soKetNoi.value < 10) {
@@ -288,6 +293,12 @@ function tinhTienCap(loaiKhachHang, soKetNoi, soKenhCaoCap = 0) {
 }
 document.getElementById('btnTinhTienCap').addEventListener('click', () => {
     const maKH = document.getElementById('maKH').value;
+
+    if (loaiKhachHang.value === '') {
+        alert('Vui lòng chọn loại khách hàng');
+        return;
+    }
+
     const tienCap = tinhTienCap(loaiKhachHang.value, soKetNoi.value, soKenhCaoCap.value);
     const tienCapFormatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(tienCap);
 
