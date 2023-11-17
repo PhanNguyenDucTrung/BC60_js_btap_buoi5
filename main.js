@@ -12,31 +12,27 @@ function tinhDiemUuTien() {}
 
 document.getElementById('btnQuanLiTuyenSinh').addEventListener('click', function () {
     const diemChuan = document.getElementById('diemChuan').value * 1;
-    const diemToan = document.getElementById('diemToan').value * 1;
-    const diemLy = document.getElementById('diemLy').value * 1;
-    const diemHoa = document.getElementById('diemHoa').value * 1;
-    const tongDiemBaMon = diemHoa + diemLy + diemToan;
+    const diemMonThu1 = document.getElementById('diemMonThu1').value * 1;
+    const diemMonThu2 = document.getElementById('diemMonThu2').value * 1;
+    const diemMonThu3 = document.getElementById('diemMonThu3').value * 1;
+    const tongDiemBaMon = diemMonThu1 + diemMonThu2 + diemMonThu3;
     const hienThiTuyenSinh = document.getElementById('hienThiTuyenSinh');
 
     const khuVuc = document.getElementById('khuVuc').value;
     const doiTuong = document.getElementById('doiTuong').value;
 
-    var ketQua = true;
+    var ketQua = '';
 
     var diemUuTien = 0;
     switch (khuVuc) {
         case 'A':
             diemUuTien = 2;
-            console.log(diemUuTien);
             break;
         case 'B':
-            console.log(diemUuTien);
             diemUuTien = 1;
             break;
         case 'C':
             diemUuTien = 0.5;
-            console.log(diemUuTien);
-
             break;
         default:
             diemUuTien = 0;
@@ -44,34 +40,28 @@ document.getElementById('btnQuanLiTuyenSinh').addEventListener('click', function
 
     switch (doiTuong) {
         case '0':
-            console.log(diemUuTien);
             diemUuTien += 0;
             break;
         case '1':
             diemUuTien += 2.5;
-            console.log(diemUuTien);
             break;
 
         case '2':
             diemUuTien += 1.5;
-            console.log(diemUuTien);
-
             break;
         case '3':
             diemUuTien += 1;
-            console.log(diemUuTien);
             break;
     }
 
     const tongDiem = tongDiemBaMon + diemUuTien;
-    console.log(tongDiem);
 
-    if (tongDiem >= diemChuan) {
-        console.log('Bạn đậu tốt nghiệp');
+    if (tongDiem >= diemChuan && diemMonThu1 > 0 && diemMonThu2 > 0 && diemMonThu3 > 0) {
         ketQua = 'đậu';
-    } else {
-        console.log('Bạn rớt tốt nghiệp');
+    } else if (tongDiem < diemChuan) {
         ketQua = 'rớt';
+    } else {
+        ketQua = 'rớt do có môn điểm 0';
     }
     var content = '';
 
@@ -289,7 +279,10 @@ function tinhTienCap(loaiKhachHang, soKetNoi, soKenhCaoCap = 0) {
         const phiDichVuCoBan_muc2 = 5;
         const phiThueKenhCaoCap = 50;
         tienCap =
-            phiXuLyHoaDon + phiDichVuCoBan_muc1 + phiDichVuCoBan_muc2 * soKetNoi + phiThueKenhCaoCap * soKenhCaoCap;
+            phiXuLyHoaDon +
+            phiDichVuCoBan_muc1 +
+            phiDichVuCoBan_muc2 * (soKetNoi - 10) +
+            phiThueKenhCaoCap * soKenhCaoCap;
         return tienCap;
     }
 }
